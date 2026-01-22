@@ -124,9 +124,7 @@ class TetrisGame:
                                      self.board_y + y * GRID_SIZE,
                                      GRID_SIZE, GRID_SIZE), 1)
     
-    def draw_sidebar(self):
-        sidebar_x = self.board_x + GRID_WIDTH * GRID_SIZE + 20
-        
+            
         # 绘制侧边栏背景
         pygame.draw.rect(self.screen, DARK_GRAY, 
                         (sidebar_x - 10, self.board_y - 10, 
