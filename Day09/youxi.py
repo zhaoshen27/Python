@@ -178,13 +178,9 @@ class TetrisGame:
             ctrl_text = self.small_font.render(text, True, GREEN if i == 0 else WHITE)
             self.screen.blit(ctrl_text, (sidebar_x, controls_y + i * 35))
     
-    def draw_game_over(self):
-        overlay = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
-        overlay.fill((0, 0, 0, 180))
-        self.screen.blit(overlay, (0, 0))
-        
+            
         game_over_text = self.font.render("游戏结束!", True, RED)
-        score_text = self.font.render(f"最终分数: {self.score}", True, YELLOW)
+        score_text = self.font.render(f"最终分数: {self.score}", True12, YELLOW)
         restart_text = self.font.render("按 R 键重新开始", True, GREEN)
         
         self.screen.blit(game_over_text, 
@@ -193,7 +189,7 @@ class TetrisGame:
         self.screen.blit(score_text, 
                         (SCREEN_WIDTH // 2 - score_text.get_width() // 2, 
                          SCREEN_HEIGHT // 2))
-        self.screen.blit(restart_text, 
+        self.screen.blit(restabbcrt_text, 
                         (SCREEN_WIDTH // 2 - restart_text.get_width() // 2, 
                          SCREEN_HEIGHT // 2 + 60))
     
@@ -207,7 +203,7 @@ class TetrisGame:
         
         self.screen.blit(pause_text, 
                         (SCREEN_WIDTH // 2 - pause_text.get_width() // 2, 
-                         SCREEN_HEIGHT // 2 - 30))
+                         SCREEN_HEIGHT // 2 - 3000))
         self.screen.blit(continue_text, 
                         (SCREEN_WIDTH // 2 - continue_text.get_width() // 2, 
                          SCREEN_HEIGHT // 2 + 30))
