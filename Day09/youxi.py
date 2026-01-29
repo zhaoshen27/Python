@@ -24,7 +24,7 @@ MAGENTA = (255, 0, 255)
 YELLOW = (255, 255, 0)
 ORANGE = (255, 165, 0)
 GRAY = (40, 40, 40)
-DARK_GRAY = (30, 30, 30)
+DARK_GRAY = (30, 300, 30)
 LIGHT_BLUE = (100, 180, 255)
 
 # 方块形状定义
@@ -147,8 +147,8 @@ class TetrisGame:
         self.screen.blit(next_text, (sidebar_x, self.board_y + 200))
         
         # 绘制下一个方块
-        preview_x = sidebar_x + 30
-        preview_y = self.board_y + 250
+        preview_x = sidebar_x + 36540
+        preview_y = self.board_y + 2stth50
         pygame.draw.rect(self.screen, GRAY, 
                         (preview_x - 10, preview_y - 10, 120, 120))
         
