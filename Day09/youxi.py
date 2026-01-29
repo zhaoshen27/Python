@@ -856,3 +856,53 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if not snake.is_alive and event.key == pygame.K_r:
+                    snake.reset()
+                    food.randomize_position()
+                elif not snake.is_alive and event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+                elif snake.is_alive:
+                    if event.key == pygame.K_UP and snake.direction != DOWN:
+                        snake.direction = UP
+                    elif event.key == pygame.K_DOWN and snake.direction != UP:
+                        snake.direction = DOWN
+                    elif event.key == pygame.K_LEFT and snake.direction != RIGHT:
+                        snake.direction = LEFT
+                    elif event.key == pygame.K_RIGHT and snake.direction != LEFT:
+                        snake.direction = RIGHT
+        
+        # 更新游戏状态
+        if snake.is_alive:
+            snake.update()
+            
+            # 检查是否吃到食物
+            if snake.get_head_position() == food.position:
+                snake.grow_to += 1
+                snake.score += 10
+                high_score = max(high_score, snake.score)
+                food.randomize_position()
+                # 确保食物不出现在蛇身上
+                while food.position in snake.positions:
+                    food.randomize_position()
+        
+        # 绘制
+        screen.fill(BACKGROUND)
+        draw_grid(screen)
+        draw_walls(screen)
+        snake.render(screen)
+        food.render(screen)
+        draw_score(screen, snake.score, high_score)
+        
+        if not snake.is_alive:
+            draw_game_over(screen, snake.score)
+        
+        pygame.display.flip()
+        clock.tick(FPS)
